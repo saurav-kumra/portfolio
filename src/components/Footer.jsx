@@ -7,7 +7,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="container footer-container">
         <div className="footer-content">
-          <p className="mono">Designed & Built by Saurav Kumar</p>
+          <p className="mono">Built with React, Vite and deployed using AWS S3 static hosting.</p>
           <p className="copyright">© {new Date().getFullYear()} DevOps Portfolio. All rights reserved.</p>
         </div>
         

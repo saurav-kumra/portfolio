@@ -1,51 +1,35 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import './Skills.css';
 import { 
-  SiGooglecloud, SiJenkins, SiGithubactions,
-  SiDocker, SiKubernetes, SiTerraform, SiAnsible,
-  SiPython, SiGnubash, SiGo, SiPrometheus, SiGrafana, SiElasticsearch
+  SiJenkins, SiGithubactions, SiLinux,
+  SiDocker, SiKubernetes, SiTerraform,
+  SiGnubash, SiPrometheus, SiGrafana, SiElasticsearch
 } from 'react-icons/si';
 import { FaAws } from 'react-icons/fa';
 
 const skillsData = [
   {
-    category: 'Cloud Platforms',
+    category: 'Primary Skills',
+    highlight: true,
     items: [
       { name: 'AWS', icon: <FaAws /> },
-      { name: 'GCP', icon: <SiGooglecloud /> }
+      { name: 'Docker', icon: <SiDocker /> },
+      { name: 'Kubernetes', icon: <SiKubernetes /> },
+      { name: 'Terraform', icon: <SiTerraform /> }
     ]
   },
   {
-    category: 'CI/CD Tools',
+    category: 'Secondary Skills',
     items: [
       { name: 'Jenkins', icon: <SiJenkins /> },
-      { name: 'GitHub Actions', icon: <SiGithubactions /> }
+      { name: 'GitHub Actions', icon: <SiGithubactions /> },
+      { name: 'Linux', icon: <SiLinux /> },
+      { name: 'Bash', icon: <SiGnubash /> }
     ]
   },
   {
-    category: 'Containerization & Orchestration',
-    items: [
-      { name: 'Docker', icon: <SiDocker /> },
-      { name: 'Kubernetes', icon: <SiKubernetes /> }
-    ]
-  },
-  {
-    category: 'Infrastructure as Code',
-    items: [
-      { name: 'Terraform', icon: <SiTerraform /> },
-      { name: 'Ansible', icon: <SiAnsible /> }
-    ]
-  },
-  {
-    category: 'Scripting & Programming',
-    items: [
-      { name: 'Python', icon: <SiPython /> },
-      { name: 'Bash', icon: <SiGnubash /> },
-      { name: 'Go', icon: <SiGo /> }
-    ]
-  },
-  {
-    category: 'Monitoring & Logging',
+    category: 'Monitoring Tools',
     items: [
       { name: 'Prometheus', icon: <SiPrometheus /> },
       { name: 'Grafana', icon: <SiGrafana /> },
@@ -54,15 +38,38 @@ const skillsData = [
   }
 ];
 
+const fadeSlideUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: { 
+    opacity: 1,
+    transition: { staggerChildren: 0.1 }
+  }
+};
+
 const Skills = () => {
   return (
     <section id="skills" className="skills section">
-      <div className="container">
-        <h2 className="section-title">Technical Skills</h2>
+      <motion.div 
+        className="container"
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <motion.h2 variants={fadeSlideUp} className="section-title">Technical Skills</motion.h2>
         
         <div className="skills-grid grid">
           {skillsData.map((skillGroup, index) => (
-            <div key={index} className="skill-card glass">
+            <motion.div 
+              key={index} 
+              variants={fadeSlideUp} 
+              className={`skill-card glass ${skillGroup.highlight ? 'primary-card' : ''}`}
+            >
               <h3 className="skill-category">{skillGroup.category}</h3>
               <div className="skill-items">
                 {skillGroup.items.map((item, idx) => (
@@ -72,10 +79,10 @@ const Skills = () => {
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

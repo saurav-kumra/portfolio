@@ -1,21 +1,44 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import './About.css';
 import { SiDocker, SiKubernetes, SiTerraform } from 'react-icons/si';
 import { FaAws } from 'react-icons/fa';
 
+const fadeSlideUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: { 
+    opacity: 1,
+    transition: { staggerChildren: 0.2 }
+  }
+};
+
 const About = () => {
   return (
     <section id="about" className="about section">
-      <div className="container">
-        <h2 className="section-title">About Me</h2>
+      <motion.div 
+        className="container"
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <motion.h2 variants={fadeSlideUp} className="section-title">About Me</motion.h2>
         
         <div className="about-grid grid">
-          <div className="about-content fade-in-up delay-1">
+          <motion.div variants={fadeSlideUp} className="about-content">
             <p>
-              Hello! My journey into tech started with curiosity about how large-scale systems stay online. This led me to the fascinating world of <strong>DevOps and Cloud Computing</strong>.
+              I’m a DevOps-focused engineering student passionate about building scalable cloud infrastructure and automating deployments using AWS, Docker, Kubernetes, and Terraform.
             </p>
             <p>
-              I am a dedicated student mapping the bridge between software development and IT operations. I specialize in designing robust CI/CD pipelines, provisioning infrastructure as code, and containerizing distributed applications to ensure they run smoothly from local development to production.
+              I enjoy designing CI/CD pipelines and infrastructure-as-code systems that improve deployment reliability and developer productivity.
+            </p>
+            <p>
+              Currently seeking entry-level DevOps opportunities where I can contribute to automation, cloud operations, and platform engineering teams.
             </p>
 
             
@@ -33,31 +56,31 @@ const About = () => {
                 <p>Automation Focus</p>
               </div>
             </div>
-          </div>
+          </motion.div>
           
-          <div className="about-visuals glass animate-float delay-2">
+          <motion.div variants={fadeSlideUp} className="about-visuals glass animate-float">
             <h3>Core Focus</h3>
             <div className="focus-grid">
               <div className="focus-item">
-                <SiDocker className="focus-icon docker animate-float-slow delay-1" />
+                <SiDocker className="focus-icon docker animate-float-slow" />
                 <span>Containerization</span>
               </div>
               <div className="focus-item">
-                <SiKubernetes className="focus-icon k8s animate-float-slow delay-2" />
+                <SiKubernetes className="focus-icon k8s animate-float-slow" />
                 <span>Orchestration</span>
               </div>
               <div className="focus-item">
-                <SiTerraform className="focus-icon terraform animate-float-slow delay-3" />
+                <SiTerraform className="focus-icon terraform animate-float-slow" />
                 <span>Infrastructure as Code</span>
               </div>
               <div className="focus-item">
-                <FaAws className="focus-icon aws animate-float-slow delay-4" />
+                <FaAws className="focus-icon aws animate-float-slow" />
                 <span>Cloud Computing</span>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
