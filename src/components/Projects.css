@@ -1,109 +1,172 @@
-.projects-grid {
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 2rem;
+/* Projects GSAP Section */
+.projects-gsap-section {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
 }
 
-.project-card {
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  transition: var(--transition);
+.cards-wrapper {
   position: relative;
+  width: 100%;
+  max-width: 1100px;
+  height: 60vh;
+  margin-top: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* GitHub Dark Theme Card Styling - 2 Column Layout */
+.gsap-project-card {
+  position: absolute; /* Managed by GSAP top/left/transform */
+  width: 85%;
+  max-width: 1000px;
+  height: auto;
+  min-height: 450px;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
   overflow: hidden;
 }
 
-.project-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
+/* Left Column - Content */
+.project-content-left {
+  width: 55%;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Right Column - Image */
+.project-image-right {
+  width: 45%;
+  padding: 1.5rem;
+  padding-left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-image-right img {
   width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 1px solid #30363d;
 }
 
-/* Let Framer Motion handle translateY hover via whileHover */
-.project-card:hover::before {
-  transform: scaleX(1);
-}
-
+/* Typography and Elements */
 .project-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
 }
 
 .folder-icon {
   font-size: 2.5rem;
-  color: var(--primary);
-}
-
-.project-links {
-  display: flex;
-  gap: 1rem;
+  color: #58a6ff;
 }
 
 .project-links a {
   font-size: 1.25rem;
-  color: var(--text-muted);
+  color: #8b949e;
+  transition: color 0.2s ease;
 }
 
 .project-links a:hover {
-  color: var(--primary);
+  color: #58a6ff;
 }
 
 .project-title {
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin-bottom: 1rem;
-  color: var(--text-main);
-}
-
-.project-title:hover {
-  color: var(--primary);
+  color: #ffffff;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 .project-description {
-  color: var(--text-muted);
-  font-size: 1rem;
-  flex-grow: 1; /* Pushes the tech list to the bottom */
+  color: #8b949e;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  flex-grow: 1;
   margin-bottom: 2rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .project-tech-list {
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 2rem;
+  list-style: none;
+  padding: 0;
 }
 
 .tech-badge {
-  background: rgba(14, 165, 233, 0.1);
-  color: var(--primary);
-  padding: 0.35rem 0.85rem;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  border: 1px solid rgba(14, 165, 233, 0.2);
-  transition: var(--transition);
-}
-
-.tech-badge:hover {
-  background: rgba(14, 165, 233, 0.2);
-  transform: translateY(-2px);
+  background: #1f2d3d;
+  color: #58a6ff;
+  padding: 0.4rem 1rem;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 
 .project-footer {
-  margin-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  padding-top: 1.5rem;
+  margin-top: auto;
+  display: flex;
 }
 
-.project-footer .btn {
-  font-size: 0.95rem;
-  padding: 0.6rem 1rem;
+.btn-github {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid #30363d;
+  padding: 0.8rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-github:hover {
+  background: #30363d;
+}
+
+/* Ensure responsiveness */
+@media (max-width: 900px) {
+  .gsap-project-card {
+    flex-direction: column;
+    width: 90%;
+  }
+  .project-content-left {
+    width: 100%;
+    padding: 1.5rem;
+  }
+  .project-image-right {
+    width: 100%;
+    padding: 1.5rem;
+    padding-top: 0;
+  }
+  .project-image-right img {
+    height: 250px;
+  }
+  .cards-wrapper {
+    height: 75vh;
+  }
 }
