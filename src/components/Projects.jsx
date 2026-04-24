@@ -62,13 +62,12 @@ const Projects = () => {
     
     if (!section || cards.length === 0) return;
 
-    // Create the custom ease based on user's exact cubic-bezier curve
     CustomEase.create("elegantEase", "0.25, 0.46, 0.45, 0.94");
 
-    let ctx = gsap.context(() => {
-      // Set initial states
-      // Card 0 (top) is centered (-50, -50)
-      // Cards 1+ are offscreen right (100) waiting to slide in
+    let mm = gsap.matchMedia();
+
+    // Desktop view: Pinned scroll sequence
+    mm.add("(min-width: 1025px)", () => {
       gsap.set(cards, {
         position: 'absolute',
         top: '50%',
@@ -81,27 +80,21 @@ const Projects = () => {
         opacity: (i) => (i === 0 ? 1 : 0.3)
       });
 
-      // Create a timeline that spans height proportional to number of cards
-      // Increased scroll distance (150% instead of 100%) to reduce scroll sensitivity
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
           start: 'top top',
           end: `+=${cards.length * 150}%`,
           pin: true,
-          scrub: 1.2, // Slightly smoother scrubbing
+          scrub: 1.2,
           anticipatePin: 1
         }
       });
 
-      // Create transitions for each scroll step
       cards.forEach((card, index) => {
         if (index === cards.length - 1) return;
-
-        // Label for simultaneous animations
         const label = `step${index}`;
 
-        // 1. Animate current card OUT to the LEFT (Deck stack top position)
         tl.to(card, {
           xPercent: -120,
           scale: 0.9,
@@ -110,7 +103,6 @@ const Projects = () => {
           duration: 0.8
         }, label);
 
-        // 2. Animate next card IN from the RIGHT to center
         tl.to(cards[index + 1], {
           xPercent: -50,
           scale: 1,
@@ -119,22 +111,44 @@ const Projects = () => {
           duration: 0.8
         }, label);
 
-        // 3. Animate previously viewed cards deeper into the left deck stack
         for (let k = 0; k < index; k++) {
-          const depth = index - k; // How deep into the stack it goes
+          const depth = index - k;
           tl.to(cards[k], {
             xPercent: -120 - (depth * 5),
             yPercent: -50 - (depth * 5),
             scale: 0.9 - (depth * 0.05),
-            opacity: 0.3 - (depth * 0.1), // Fade out further as they get deeper
+            opacity: 0.3 - (depth * 0.1),
             ease: 'elegantEase',
             duration: 0.8
           }, label);
         }
       });
-    }, sectionRef);
+    });
 
-    return () => ctx.revert();
+    // Tablet & Mobile view: Normal vertical flow with Intersection Observer effect
+    mm.add("(max-width: 1024px)", () => {
+      // Clean up any remaining positioning from desktop
+      gsap.set(cards, { clearProps: "all" });
+
+      cards.forEach((card) => {
+        gsap.fromTo(card, 
+          { opacity: 0, y: 50 }, 
+          { 
+            opacity: 1, 
+            y: 0, 
+            duration: 0.8, 
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 85%",
+              toggleActions: "play none none reverse"
+            }
+          }
+        );
+      });
+    });
+
+    return () => mm.revert();
   }, []);
 
   return (

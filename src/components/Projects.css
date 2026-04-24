@@ -149,24 +149,62 @@
 }
 
 /* Ensure responsiveness */
-@media (max-width: 900px) {
-  .gsap-project-card {
-    flex-direction: column;
-    width: 90%;
+@media (max-width: 1024px) {
+  .projects-gsap-section {
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 5rem;
   }
+
+  .container {
+    padding-top: 60px !important; /* Slightly less padding on mobile/tablet */
+  }
+
+  .cards-wrapper {
+    flex-direction: column;
+    height: auto;
+    gap: 3rem; /* Spacing between vertically stacked cards */
+  }
+
+  .gsap-project-card {
+    position: relative !important; /* Disable absolute positioning from desktop */
+    width: 85vw; /* Tablet width */
+    max-width: 800px;
+    flex-direction: column-reverse; /* Image on top, content below */
+    min-height: auto;
+  }
+
   .project-content-left {
     width: 100%;
-    padding: 1.5rem;
+    padding: 2.5rem;
   }
+
   .project-image-right {
     width: 100%;
-    padding: 1.5rem;
-    padding-top: 0;
+    padding: 0; /* Remove padding to fill the whole top area */
+    align-items: stretch;
   }
+
   .project-image-right img {
-    height: 250px;
+    height: 300px; /* Tablet image height */
+    border-radius: 20px 20px 0 0; /* Only round top corners */
+    border: none;
+    border-bottom: 1px solid #30363d;
   }
-  .cards-wrapper {
-    height: 75vh;
+}
+
+@media (max-width: 768px) {
+  .gsap-project-card {
+    width: 95vw; /* Mobile width */
+    border-radius: 16px;
+  }
+
+  .project-content-left {
+    padding: 20px; /* Less padding on small screens */
+  }
+
+  .project-image-right img {
+    height: 200px; /* Mobile image height */
+    border-radius: 16px 16px 0 0;
   }
 }
