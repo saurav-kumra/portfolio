@@ -29,11 +29,11 @@ const pulseGlow = {
 
 const Workflow = () => {
   const steps = [
-    { name: 'Git', icon: <FaGitAlt />, color: '#F05032' },
-    { name: 'Jenkins', icon: <SiJenkins />, color: '#D24939' },
-    { name: 'Docker', icon: <SiDocker />, color: '#2496ED' },
-    { name: 'Kubernetes', icon: <SiKubernetes />, color: '#326CE5' },
-    { name: 'AWS', icon: <FaAws />, color: '#FF9900' }
+    { name: 'Git', icon: <FaGitAlt />, color: '#4A4A4A' },
+    { name: 'Jenkins', icon: <SiJenkins />, color: '#4A4A4A' },
+    { name: 'Docker', icon: <SiDocker />, color: '#4A4A4A' },
+    { name: 'Kubernetes', icon: <SiKubernetes />, color: '#4A4A4A' },
+    { name: 'AWS', icon: <FaAws />, color: '#4A4A4A' }
   ];
 
   return (

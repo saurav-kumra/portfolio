@@ -22,6 +22,8 @@
   gap: 1.5rem;
   padding: 2.5rem;
   transition: transform 0.3s ease;
+  background: #0A0A0A;
+  border-radius: 1rem;
 }
 
 .info-card:hover {
@@ -30,7 +32,7 @@
 
 .info-icon {
   font-size: 2.5rem;
-  color: var(--primary);
+  color: #FFFFFF;
   flex-shrink: 0;
   transition: var(--transition);
 }
@@ -40,7 +42,7 @@
 }
 
 .info-card a:hover .info-icon {
-  color: #fff;
+  color: #CCCCCC;
   transform: scale(1.1);
 }
 
@@ -51,17 +53,17 @@
 }
 
 .contact-link:hover {
-  color: var(--primary);
+  color: #FFFFFF;
 }
 
 .info-card h3 {
   font-size: 1.2rem;
-  color: var(--text-main);
+  color: #FFFFFF;
   margin-bottom: 0.3rem;
 }
 
 .info-card p {
-  color: var(--text-muted);
+  color: #CCCCCC;
   font-size: 1rem;
   margin: 0;
 }

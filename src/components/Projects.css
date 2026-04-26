@@ -25,12 +25,12 @@
   max-width: 1000px;
   height: auto;
   min-height: 450px;
-  background: #161b22;
-  border: 1px solid #30363d;
+  background: #FFFFFF;
+  border: 1px solid #E0E0E0;
   border-radius: 20px;
   display: flex;
   flex-direction: row;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   overflow: hidden;
 }
 
@@ -57,7 +57,7 @@
   height: 100%;
   object-fit: cover;
   border-radius: 20px;
-  border: 1px solid #30363d;
+  border: 1px solid #E0E0E0;
 }
 
 /* Typography and Elements */
@@ -70,29 +70,29 @@
 
 .folder-icon {
   font-size: 2.5rem;
-  color: #58a6ff;
+  color: #0A0A0A;
 }
 
 .project-links a {
   font-size: 1.25rem;
-  color: #8b949e;
+  color: #555555;
   transition: color 0.2s ease;
 }
 
 .project-links a:hover {
-  color: #58a6ff;
+  color: #000000;
 }
 
 .project-title {
   font-size: 2rem;
   margin-bottom: 1rem;
-  color: #ffffff;
+  color: #0A0A0A;
   font-weight: 700;
   line-height: 1.2;
 }
 
 .project-description {
-  color: #8b949e;
+  color: #555555;
   font-size: 1.05rem;
   line-height: 1.6;
   flex-grow: 1;
@@ -113,8 +113,9 @@
 }
 
 .tech-badge {
-  background: #1f2d3d;
-  color: #58a6ff;
+  background: #F0F0F0;
+  color: #1A1A1A;
+  border: 1px solid #DCDCDC;
   padding: 0.4rem 1rem;
   border-radius: 100px;
   font-size: 0.85rem;
@@ -132,11 +133,11 @@
   justify-content: center;
   gap: 0.5rem;
   width: 100%;
-  background: transparent;
+  background: #000000;
   color: #ffffff;
-  border: 1px solid #30363d;
+  border: none;
   padding: 0.8rem;
-  border-radius: 8px;
+  border-radius: 999px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
@@ -145,7 +146,7 @@
 }
 
 .btn-github:hover {
-  background: #30363d;
+  background: #222222;
 }
 
 /* Ensure responsiveness */
@@ -189,7 +190,7 @@
     height: 300px; /* Tablet image height */
     border-radius: 20px 20px 0 0; /* Only round top corners */
     border: none;
-    border-bottom: 1px solid #30363d;
+    border-bottom: 1px solid #E0E0E0;
   }
 }
 

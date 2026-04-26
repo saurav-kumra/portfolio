@@ -1,7 +1,7 @@
 .footer {
-  background: var(--bg-darker);
+  background: #F5F5F5;
   padding: 3rem 0;
-  border-top: 1px solid var(--glass-border);
+  border-top: 1px solid #E0E0E0;
   margin-top: 4rem;
 }
 
@@ -37,7 +37,7 @@
 }
 
 .footer-links a:hover {
-  color: var(--primary);
+  color: #000000;
   transform: translateY(-3px);
 }
 
