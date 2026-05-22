@@ -5,23 +5,23 @@
 }
 
 .about-content p {
-  color: var(--text-muted);
+  color: var(--text-secondary);
   margin-bottom: 1.5rem;
   font-size: 1.1rem;
 }
 
 .about-content strong {
-  color: var(--text-main);
+  color: var(--text-primary);
 }
 
 .about-content em {
-  color: var(--primary);
+  color: var(--btn-primary-bg);
   font-style: normal;
-  border-left: 3px solid var(--primary);
+  border-left: 3px solid var(--btn-primary-bg);
   padding-left: 1rem;
   display: block;
   margin-top: 2rem;
-  background: #F0F0F0;
+  background: var(--tag-bg);
   padding: 1rem;
   border-radius: 0 0.5rem 0.5rem 0;
 }
@@ -40,18 +40,22 @@
 
 .stat h3 {
   font-size: 2rem;
-  color: var(--primary);
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
 
 .stat p {
   font-size: 0.9rem !important;
   margin: 0 !important;
-  color: var(--text-muted);
+  color: var(--text-secondary);
 }
 
 .about-visuals {
   padding: 2.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  border-radius: 1rem;
 }
 
 .about-visuals h3 {
@@ -78,7 +82,7 @@
 }
 
 .focus-item:hover {
-  background: #F0F0F0;
+  background: var(--bg-secondary);
   transform: translateY(-5px);
 }
 
@@ -86,10 +90,16 @@
   font-size: 3rem;
 }
 
-.focus-icon.docker { color: #4A4A4A; }
-.focus-icon.k8s { color: #4A4A4A; }
-.focus-icon.terraform { color: #4A4A4A; }
-.focus-icon.aws { color: #4A4A4A; }
+.focus-icon.docker { color: var(--text-primary); }
+.focus-icon.k8s { color: var(--text-primary); }
+.focus-icon.terraform { color: var(--text-primary); }
+.focus-icon.aws { color: var(--text-primary); }
+
+.about-card, .timeline-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+}
 
 @media (max-width: 992px) {
   .about-grid {

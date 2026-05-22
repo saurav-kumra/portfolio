@@ -15,12 +15,16 @@
   position: relative;
   overflow: hidden;
   border-radius: 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  color: var(--text-primary);
 }
 
 /* Let framer-motion handle physical transforms on hover structure */
 .cert-card:hover {
-  background: var(--bg-card-hover);
-  border-color: #D0D0D0;
+  background: var(--bg-secondary);
+  border-color: var(--text-primary);
 }
 
 .cert-card::before {
@@ -30,7 +34,7 @@
   top: 0;
   height: 100%;
   width: 4px;
-  background: #000000;
+  background: var(--btn-primary-bg);
   opacity: 0;
   transition: var(--transition);
 }
@@ -50,7 +54,7 @@
   gap: 1rem;
   font-size: 1.3rem;
   margin-bottom: 0.8rem;
-  color: var(--text-main);
+  color: var(--text-primary);
   line-height: 1.4;
 }
 
@@ -59,36 +63,36 @@
   align-items: center;
   justify-content: center;
   font-size: 1.8rem;
-  background: #F0F0F0;
+  background: var(--tag-bg);
   padding: 0.6rem;
   border-radius: 0.6rem;
-  border: 1px solid #DCDCDC;
+  border: 1px solid var(--tag-border);
 }
 
 .brand-aws {
-  color: #4A4A4A;
+  color: var(--text-primary);
 }
 
 .brand-k8s {
-  color: #4A4A4A;
+  color: var(--text-primary);
 }
 
 .brand-docker {
-  color: #4A4A4A;
+  color: var(--text-primary);
 }
 
 .cert-meta {
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   font-size: 0.95rem;
   margin-left: 4.2rem;
 }
 
 .cert-issuer {
   font-weight: 500;
-  color: #0A0A0A;
+  color: var(--text-primary);
 }
 
 .cert-link-btn {

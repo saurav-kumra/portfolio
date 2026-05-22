@@ -1,22 +1,27 @@
 /* Navbar Redesign - Aithor Pill Style */
 .navbar-pill {
-  position: fixed;
-  top: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: fit-content;
-  max-width: 900px;
-  background: #F0F0F0;
-  border-radius: 999px;
-  padding: 8px 8px 8px 18px;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
-  z-index: 1000;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
+  border: 1.5px solid #D8D8D8 !important;
+  border-radius: 50px !important;
+  background: #FFFFFF !important;
+  padding: 8px 8px 8px 20px !important;
+  position: fixed !important;
+  top: 14px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: calc(100% - 80px) !important;
+  max-width: 880px !important;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08) !important;
+  z-index: 1000 !important;
+  display: flex !important;
+  align-items: center !important;
+  overflow: visible !important;
+  transition: background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
 }
 
 body.dark-mode .navbar-pill {
-  background: #1A1A1A;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
+  background-color: #1C1C1C !important;
+  border: 1.5px solid #333333 !important;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.3) !important;
 }
 
 .nav-container {
@@ -24,6 +29,7 @@ body.dark-mode .navbar-pill {
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
+  width: 100%;
 }
 
 .logo {
@@ -41,7 +47,7 @@ body.dark-mode .logo {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 4px;
 }
 
 .nav-links li {
@@ -52,8 +58,8 @@ body.dark-mode .logo {
   display: block;
   font-weight: 500;
   font-size: 14px;
-  color: #444444;
-  padding: 6px 12px;
+  color: #333333;
+  padding: 6px 14px;
   border-radius: 999px;
   position: relative;
   transition: background 0.2s ease, color 0.2s ease;
@@ -64,7 +70,7 @@ body.dark-mode .nav-links a {
 }
 
 .nav-links a:hover {
-  background: rgba(0, 0, 0, 0.06);
+  background: rgba(0, 0, 0, 0.05);
   color: #000000;
 }
 
@@ -82,7 +88,7 @@ body.dark-mode .nav-links a:hover {
   transform: translateX(-50%);
   width: 4px;
   height: 4px;
-  background-color: #0A0A0A;
+  background-color: #000000;
   border-radius: 50%;
 }
 
@@ -100,11 +106,12 @@ body.dark-mode .nav-links a.active::after {
   background: transparent;
   border: none;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #444444;
+  color: #555555;
+  margin: 0 12px;
   padding: 8px;
   border-radius: 50%;
   transition: background 0.2s ease, color 0.2s ease;
@@ -123,7 +130,7 @@ body.dark-mode .theme-toggle:hover {
 }
 
 .nav-cta-btn {
-  background: #111111 !important;
+  background: #0F0F0F !important;
   color: #FFFFFF !important;
   --framer-text-color: #FFFFFF !important;
   border-radius: 999px !important;
@@ -135,14 +142,14 @@ body.dark-mode .theme-toggle:hover {
   align-items: center;
   justify-content: center;
   border: none !important;
-  box-shadow: 0 4px 10px rgba(220, 70, 20, 0.35) !important;
+  box-shadow: 0 3px 8px rgba(210, 60, 10, 0.3) !important;
   transition: box-shadow 0.3s ease !important;
   text-decoration: none;
   white-space: nowrap;
 }
 
 .nav-cta-btn:hover {
-  box-shadow: 0 4px 14px rgba(220, 70, 20, 0.55) !important;
+  box-shadow: 0 3px 10px rgba(210, 60, 10, 0.5) !important;
 }
 
 .nav-cta-btn * {
@@ -165,7 +172,8 @@ body.dark-mode .mobile-menu-btn {
 
 @media (max-width: 768px) {
   .navbar-pill {
-    width: calc(100% - 32px);
+    width: 90vw;
+    min-width: 0;
     max-width: none;
     padding: 8px 12px 8px 18px;
   }

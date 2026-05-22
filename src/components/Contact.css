@@ -1,5 +1,5 @@
 .contact-subtitle {
-  color: var(--text-muted);
+  color: var(--text-secondary);
   max-width: 600px;
   margin: 0 auto 3rem auto;
   text-align: center;
@@ -22,7 +22,9 @@
   gap: 1.5rem;
   padding: 2.5rem;
   transition: transform 0.3s ease;
-  background: #0A0A0A;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
   border-radius: 1rem;
 }
 
@@ -32,7 +34,7 @@
 
 .info-icon {
   font-size: 2.5rem;
-  color: #FFFFFF;
+  color: var(--text-primary);
   flex-shrink: 0;
   transition: var(--transition);
 }
@@ -42,7 +44,7 @@
 }
 
 .info-card a:hover .info-icon {
-  color: #CCCCCC;
+  color: var(--text-secondary);
   transform: scale(1.1);
 }
 
@@ -53,17 +55,17 @@
 }
 
 .contact-link:hover {
-  color: #FFFFFF;
+  color: var(--text-primary);
 }
 
 .info-card h3 {
   font-size: 1.2rem;
-  color: #FFFFFF;
+  color: var(--text-primary);
   margin-bottom: 0.3rem;
 }
 
 .info-card p {
-  color: #CCCCCC;
+  color: var(--text-secondary);
   font-size: 1rem;
   margin: 0;
 }
@@ -78,4 +80,16 @@
     width: 100%;
     max-width: 400px;
   }
+}
+
+input, textarea {
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--text-primary);
+}
+input:focus, textarea:focus {
+  border-color: var(--text-primary);
+}
+input::placeholder, textarea::placeholder {
+  color: var(--text-muted);
 }

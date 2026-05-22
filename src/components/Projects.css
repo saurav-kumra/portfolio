@@ -25,12 +25,12 @@
   max-width: 1000px;
   height: auto;
   min-height: 450px;
-  background: #FFFFFF;
-  border: 1px solid #E0E0E0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 20px;
   display: flex;
   flex-direction: row;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow);
   overflow: hidden;
 }
 
@@ -57,7 +57,7 @@
   height: 100%;
   object-fit: cover;
   border-radius: 20px;
-  border: 1px solid #E0E0E0;
+  border: 1px solid var(--border-color);
 }
 
 /* Typography and Elements */
@@ -70,29 +70,29 @@
 
 .folder-icon {
   font-size: 2.5rem;
-  color: #0A0A0A;
+  color: var(--text-primary);
 }
 
 .project-links a {
   font-size: 1.25rem;
-  color: #555555;
+  color: var(--text-muted);
   transition: color 0.2s ease;
 }
 
 .project-links a:hover {
-  color: #000000;
+  color: var(--text-primary);
 }
 
 .project-title {
   font-size: 2rem;
   margin-bottom: 1rem;
-  color: #0A0A0A;
+  color: var(--text-primary);
   font-weight: 700;
   line-height: 1.2;
 }
 
 .project-description {
-  color: #555555;
+  color: var(--text-secondary);
   font-size: 1.05rem;
   line-height: 1.6;
   flex-grow: 1;
@@ -113,9 +113,9 @@
 }
 
 .tech-badge {
-  background: #F0F0F0;
-  color: #1A1A1A;
-  border: 1px solid #DCDCDC;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  border: 1px solid var(--tag-border);
   padding: 0.4rem 1rem;
   border-radius: 100px;
   font-size: 0.85rem;
@@ -133,8 +133,8 @@
   justify-content: center;
   gap: 0.5rem;
   width: 100%;
-  background: #000000;
-  color: #ffffff;
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
   border: none;
   padding: 0.8rem;
   border-radius: 999px;
@@ -146,7 +146,8 @@
 }
 
 .btn-github:hover {
-  background: #222222;
+  background: var(--btn-primary-bg);
+  opacity: 0.9;
 }
 
 /* Ensure responsiveness */
@@ -190,7 +191,7 @@
     height: 300px; /* Tablet image height */
     border-radius: 20px 20px 0 0; /* Only round top corners */
     border: none;
-    border-bottom: 1px solid #E0E0E0;
+    border-bottom: 1px solid var(--border-color);
   }
 }
 

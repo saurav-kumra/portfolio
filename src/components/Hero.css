@@ -23,7 +23,7 @@
 .hero-title {
   font-size: 4rem;
   margin-bottom: 0.5rem;
-  color: #0A0A0A;
+  color: var(--text-primary);
 }
 
 .hero-role {
@@ -50,9 +50,9 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: #E8E8E8;
-  border: 1px solid #D0D0D0;
-  color: #1A1A1A;
+  background: var(--tag-bg);
+  border: 1px solid var(--tag-border);
+  color: var(--tag-text);
   padding: 0.4rem 1rem;
   border-radius: 2rem;
   font-size: 0.9rem;
@@ -63,7 +63,7 @@
 .status-dot {
   width: 8px;
   height: 8px;
-  background-color: #0A0A0A;
+  background-color: var(--text-primary);
   border-radius: 50%;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
   animation: pulse-dot 2s infinite;
@@ -91,12 +91,12 @@
   background: var(--bg-card);
   padding: 0.4rem 1rem;
   border-radius: 0.5rem;
-  border: 1px solid #E0E0E0;
+  border: 1px solid var(--border-color);
 }
 
 .trust-icon {
   font-size: 1.1rem;
-  color: #0A0A0A;
+  color: var(--text-primary);
 }
 
 .hero-socials {
@@ -111,7 +111,7 @@
 }
 
 .hero-socials a:hover {
-  color: #0A0A0A;
+  color: var(--text-primary);
   transform: translateY(-3px);
 }
 
@@ -126,7 +126,7 @@
   position: absolute;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle at 50% 50%, #EFEFEF 0%, transparent 60%);
+  background: radial-gradient(circle at 50% 50%, var(--bg-secondary) 0%, transparent 60%);
   border-radius: 50%;
   filter: blur(50px);
   z-index: 0;
@@ -176,20 +176,20 @@
 }
 
 .docker-float {
-  color: #888888;
+  color: var(--text-muted);
   top: 5%;
   left: 10%;
 }
 
 .k8s-float {
-  color: #888888;
+  color: var(--text-muted);
   bottom: 10%;
   right: 5%;
   font-size: 3.5rem;
 }
 
 .aws-float {
-  color: #888888;
+  color: var(--text-muted);
   top: 20%;
   right: 15%;
   font-size: 2.5rem;

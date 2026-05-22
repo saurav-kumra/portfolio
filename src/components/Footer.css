@@ -1,8 +1,9 @@
 .footer {
-  background: #F5F5F5;
+  background: var(--bg-secondary);
   padding: 3rem 0;
-  border-top: 1px solid #E0E0E0;
+  border-top: 1px solid var(--border-color);
   margin-top: 4rem;
+  color: var(--text-secondary);
 }
 
 .footer-container {
@@ -12,13 +13,13 @@
 }
 
 .footer-content {
-  color: var(--text-muted);
+  color: var(--text-secondary);
 }
 
 .footer-content p.mono {
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
-  color: var(--text-main);
+  color: var(--text-primary);
 }
 
 .footer-content .copyright {
@@ -31,13 +32,13 @@
 }
 
 .footer-links a {
-  color: var(--text-muted);
+  color: var(--text-secondary);
   font-size: 1.5rem;
   transition: var(--transition);
 }
 
 .footer-links a:hover {
-  color: #000000;
+  color: var(--text-primary);
   transform: translateY(-3px);
 }
 
