@@ -41,6 +41,30 @@ const Hero = () => {
     })
   };
 
+  const handleDownloadResume = (e) => {
+    e.preventDefault();
+    fetch(`${import.meta.env.BASE_URL}Saurav_Kumar_Resume.pdf`)
+      .then((response) => {
+        if (!response.ok) throw new Error('Network response was not ok');
+        return response.blob();
+      })
+      .then((blob) => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        a.download = 'Saurav_Kumar_Resume.pdf';
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+      })
+      .catch((error) => {
+        console.error('Download failed, falling back to direct link:', error);
+        window.open(`${import.meta.env.BASE_URL}Saurav_Kumar_Resume.pdf`, '_blank');
+      });
+  };
+
   return (
     <section id="home" className="hero section">
       <div className="container hero-container grid">
@@ -71,10 +95,9 @@ const Hero = () => {
               View Projects
             </motion.a>
             <motion.a 
-              href="/resume.pdf" 
+              href={`${import.meta.env.BASE_URL}Saurav_Kumar_Resume.pdf`}
+              onClick={handleDownloadResume}
               className="btn btn-outline" 
-              target="_blank" 
-              rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

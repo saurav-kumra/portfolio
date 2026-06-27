@@ -17,7 +17,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'skills', 'projects', 'certificates'];
+      const sections = ['home', 'skills', 'projects', 'certificates'];
       let current = '';
       
       for (const section of sections) {
@@ -62,7 +62,7 @@ const Navbar = () => {
         </a>
         
         <ul className={`nav-links ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
-          {['home', 'about', 'skills', 'projects', 'certificates'].map((link) => (
+          {['home', 'skills', 'projects', 'certificates'].map((link) => (
             <li key={link}>
               <a 
                 href={`#${link}`}

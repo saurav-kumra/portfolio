@@ -1,73 +1,209 @@
-.workflow-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 3.5rem;
-  border-radius: 1.5rem;
-  gap: 1.5rem;
-  background: #FFFFFF;
-  border: 1px solid #E0E0E0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+.workflow {
+  padding: 4rem 0;
   position: relative;
   overflow: hidden;
 }
 
-.workflow-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
+.workflow-scroll-indicator {
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  opacity: 0.6;
+  text-align: right;
+  margin-bottom: 0.5rem;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.workflow-wrapper {
   width: 100%;
-  height: 2px;
-  background: #000000;
-  opacity: 0.7;
+  overflow-x: auto;
+  border-radius: 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) transparent;
+  cursor: grab;
+}
+
+.workflow-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+
+.workflow-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.workflow-wrapper::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 10px;
+}
+
+.workflow-wrapper::-webkit-scrollbar-thumb:hover {
+  background: var(--text-primary);
+}
+
+.workflow-track {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 3.5rem 2.5rem;
+  min-width: max-content;
 }
 
 .workflow-node {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.2rem;
-  min-width: 90px;
+  text-align: center;
+  min-width: 130px;
+  position: relative;
 }
 
-.workflow-icon {
-  font-size: 3.5rem;
-  background: #F0F0F0;
-  padding: 1.2rem;
+.workflow-icon-wrapper {
+  position: relative;
+  width: 76px;
+  height: 76px;
   border-radius: 50%;
-  border: 1px solid #DCDCDC;
+  background: #FFFFFF;
+  border: 2px solid var(--border-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: var(--transition);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.workflow-icon {
+  font-size: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover Animations */
+.workflow-node:hover .workflow-icon-wrapper {
+  border-color: var(--brand-color);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0 15px var(--brand-color);
+  transform: translateY(-8px) scale(1.08);
+}
+
+.workflow-node:hover .workflow-icon {
+  transform: scale(1.1);
+}
+
+.workflow-labels {
+  margin-top: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0 0.5rem;
 }
 
 .workflow-name {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text-main);
-  letter-spacing: 0.5px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
 }
 
-.workflow-arrow {
-  font-size: 2.5rem;
-  color: #CCCCCC;
-  display: flex;
-  align-items: center;
+.workflow-label {
+  font-size: 0.72rem;
+  color: #666666;
+  white-space: nowrap;
+  font-weight: 500;
+  opacity: 0.8;
 }
 
-@media (max-width: 900px) {
-  .workflow-container {
-    padding: 2.5rem 1rem;
-    flex-direction: column;
-    gap: 1rem;
+/* Connectors and Particle Flow */
+.workflow-connector {
+  position: relative;
+  width: 60px;
+  height: 2px;
+  background: var(--border-color);
+  flex-shrink: 0;
+}
+
+.flow-dot {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: flow-horizontal 2.5s infinite linear;
+}
+
+@keyframes flow-horizontal {
+  0% {
+    left: 0%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.7);
+  }
+  15% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  85% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.7);
+  }
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .workflow-wrapper {
+    overflow-x: hidden;
   }
   
-  .workflow-arrow {
-    transform: rotate(90deg);
-    margin: 0.5rem 0;
+  .workflow-scroll-indicator {
+    display: none;
+  }
+  
+  .workflow-track {
+    flex-direction: column;
+    padding: 2.5rem 1rem;
+    min-width: 100%;
+    gap: 1.5rem;
+  }
+  
+  .workflow-connector {
+    width: 2px;
+    height: 45px;
+  }
+  
+  .flow-dot {
+    animation: flow-vertical 2.5s infinite linear;
+    left: 50%;
+    top: 0;
+  }
+}
+
+@keyframes flow-vertical {
+  0% {
+    top: 0%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.7);
+  }
+  15% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  85% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.7);
   }
 }
