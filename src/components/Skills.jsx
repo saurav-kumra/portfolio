@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import TiltCard from './TiltCard';
 import './Skills.css';
 import { 
   SiJenkins, SiGithubactions, SiLinux,
@@ -85,10 +86,10 @@ const Skills = () => {
         
         <div className="skills-grid grid">
           {skillsData.map((skillGroup, index) => (
-            <motion.div 
-              key={index} 
-              variants={fadeSlideUp} 
+            <TiltCard
+              key={index}
               className={`skill-card glass ${skillGroup.highlight ? 'primary-card' : ''}`}
+              variants={fadeSlideUp}
               whileHover={{ y: -5, boxShadow: '0 10px 30px rgba(14, 165, 233, 0.1)' }}
               transition={{ type: 'spring', stiffness: 300, damping: 20 }}
             >
@@ -101,7 +102,7 @@ const Skills = () => {
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </TiltCard>
           ))}
         </div>
       </motion.div>
