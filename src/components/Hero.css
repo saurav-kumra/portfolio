@@ -8,6 +8,7 @@
 .hero-container {
   grid-template-columns: 1fr 1fr;
   align-items: center;
+  gap: 1.6rem; /* reduced horizontal gap by 20% */
 }
 
 .hero-content {
@@ -116,169 +117,22 @@
 }
 
 .hero-graphic {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* ─── Glowing Aura Background ──────────────────────────────────── */
-.glow-ring {
-  position: absolute;
-  width: 420px;
-  height: 420px;
-  background: linear-gradient(
-    45deg, 
-    rgba(255, 153, 0, 0.35) 0%, 
-    rgba(36, 150, 237, 0.35) 40%, 
-    rgba(123, 66, 188, 0.35) 70%,
-    rgba(50, 108, 229, 0.3) 100%
-  );
-  border-radius: 50%;
-  filter: blur(55px);
-  z-index: 0;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation: rotate-glow 16s infinite linear;
-}
-
-@keyframes rotate-glow {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg) scale(1);
-  }
-  50% {
-    transform: translate(-50%, -50%) rotate(180deg) scale(1.08);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg) scale(1);
-  }
-}
-
-.avatar-wrapper {
-  position: relative;
-  z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
 }
 
-/* ─── 3D Tilt Card ─────────────────────────────────────────────── */
-.tilt-card {
-  perspective: 1000px;
-  transform-style: preserve-3d;
-  cursor: grab;
-}
-
-.tilt-card:active {
-  cursor: grabbing;
-}
-
-.tilt-glare {
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  z-index: 3;
-  border-radius: 50%;           /* matches avatar mask shape */
-  transition: opacity 0.3s ease;
-}
-
-.avatar-img {
+.hero-static-img {
   width: 100%;
-  max-width: 350px;
+  max-width: 650px; /* Width around 650px on desktop */
   height: auto;
-  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15));
-  -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
-  mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+  display: block;
+  object-fit: contain;
   user-select: none;
   -webkit-user-drag: none;
+  transform: translate(-28px, -20px); /* Shift left and upward */
 }
-
-/* ─── Orbiting DevOps Icons ────────────────────────────────────── */
-.orbit-container {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  pointer-events: none;
-  z-index: 2;
-  transform-style: preserve-3d;
-  perspective: 1000px;
-}
-
-.orbit-icon-wrapper {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform-style: preserve-3d;
-  will-change: transform, opacity;
-  pointer-events: auto;
-}
-
-.orbit-icon-card {
-  width: 48px;
-  height: 48px;
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid var(--border-color);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06), inset 0 2px 4px rgba(255, 255, 255, 0.8);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-}
-
-.orbit-icon-card:hover {
-  transform: scale(1.18) translateZ(10px);
-  background: #ffffff;
-  border-color: var(--text-primary);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12), inset 0 2px 4px rgba(255, 255, 255, 1);
-}
-
-/* ─── Drift Particles ──────────────────────────────────────────── */
-.hero-particles {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  overflow: hidden;
-}
-
-.hero-particle {
-  position: absolute;
-  background: var(--text-primary);
-  border-radius: 50%;
-  opacity: 0;
-  animation: float-particle linear infinite;
-  filter: blur(0.5px);
-}
-
-@keyframes float-particle {
-  0% {
-    transform: translateY(100%) translateX(0) scale(0.6);
-    opacity: 0;
-  }
-  15% {
-    opacity: 0.28;
-  }
-  85% {
-    opacity: 0.28;
-  }
-  100% {
-    transform: translateY(-100px) translateX(25px) scale(1);
-    opacity: 0;
-  }
-}
-
 
 @media (max-width: 992px) {
   .hero-container {
@@ -292,4 +146,10 @@
   .hero-cta { justify-content: center; }
   .hero-socials { justify-content: center; }
   .hero-subtitle { left: 0; transform: none; }
+  
+  .hero-static-img {
+    max-width: 400px; /* responsive scaling on mobile */
+    margin: 0 auto;
+    transform: none; /* Reset transform on mobile */
+  }
 }
