@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'; // Trigger build
 import { motion } from 'framer-motion';
 import { BsGithub, BsLinkedin } from 'react-icons/bs';
 import { MdEmail } from 'react-icons/md';
