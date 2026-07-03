@@ -1,0 +1,195 @@
+.tictactoe-overlay-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Let clicks pass through except on active game elements */
+  z-index: 40;
+}
+
+/* Top HUD Controls */
+.game-hud {
+  position: absolute;
+  top: 4%;
+  left: 5%;
+  right: 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 60;
+  pointer-events: auto;
+}
+
+.game-status-panel {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1px solid var(--border-color);
+  background: rgba(17, 24, 39, 0.85) !important; /* Dark theme backdrop for legibility */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.status-text {
+  letter-spacing: 0.5px;
+}
+
+.status-text.human { color: #00F3FF; } /* Neon Cyan */
+.status-text.thinking { color: #FBBF24; } /* Warm Yellow */
+.status-text.win { color: #10B981; text-shadow: 0 0 8px rgba(16, 185, 129, 0.6); } /* Neon Green */
+.status-text.lose { color: #FF007F; text-shadow: 0 0 8px rgba(255, 0, 127, 0.6); } /* Neon Pink */
+.status-text.draw { color: #9CA3AF; }
+
+.game-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.hud-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: rgba(17, 24, 39, 0.85);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1.1rem;
+}
+
+body.dark-mode .hud-btn {
+  border-color: #2C2C2C;
+  color: #F0F0F0;
+}
+
+.hud-btn:hover {
+  transform: scale(1.08);
+  background: #111827;
+  color: #10B981;
+  border-color: #10B981;
+}
+
+.close-btn:hover {
+  color: #EF4444;
+  border-color: #EF4444;
+}
+
+/* Bottom Difficulty Tabs Panel */
+.game-difficulty-panel {
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: rgba(17, 24, 39, 0.85) !important;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  pointer-events: auto;
+}
+
+.difficulty-title {
+  font-size: 0.75rem;
+  color: #9CA3AF;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.difficulty-tabs {
+  display: flex;
+  gap: 6px;
+}
+
+.difficulty-tab {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #9CA3AF;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.difficulty-tab:hover:not(:disabled) {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.difficulty-tab.active {
+  background: #10B981;
+  color: #ffffff;
+  border-color: #10B981;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
+}
+
+.difficulty-tab:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Celebration particles styling */
+.celebration-particles-container {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 99;
+}
+
+.game-particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Responsive adjustment for Mobile */
+@media (max-width: 992px) {
+  .game-hud {
+    top: -12%;
+    left: 0;
+    right: 0;
+  }
+  
+  .game-difficulty-panel {
+    bottom: -12%;
+    width: 90%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 500px) {
+  .game-hud {
+    top: -18%;
+  }
+  
+  .game-difficulty-panel {
+    bottom: -18%;
+  }
+
+  .game-status-panel {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  .hud-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 0.95rem;
+  }
+}

@@ -1,0 +1,132 @@
+.game-overlay-grid {
+  position: absolute;
+  left: 22.656%;
+  top: 29.297%;
+  width: 53.971%;
+  height: 60.059%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0;
+  z-index: 50;
+  pointer-events: auto;
+}
+
+.cell-card-container {
+  perspective: 1000px;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.cell-card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.card-face {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.card-front {
+  background: transparent;
+}
+
+.card-back {
+  background: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+body.dark-mode .card-back {
+  background: #0B0F19;
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  display: block;
+}
+
+.card-back-bg-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.faded-bg-img {
+  filter: brightness(0.25) contrast(0.85) blur(0.5px);
+}
+
+.card-back-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(16, 185, 129, 0.03);
+}
+
+.cell-marker-container {
+  width: 60%;
+  height: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.marker-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+.x-marker {
+  color: #00F3FF;
+}
+
+.o-marker {
+  color: #FF007F;
+}
+
+/* Winning Glow CSS */
+.winning-glow {
+  box-shadow: 0 0 15px #10B981, inset 0 0 10px #10B981;
+  border: 1px solid #10B981 !important;
+  z-index: 10;
+  animation: winningPulse 1.5s infinite ease-in-out;
+}
+
+@keyframes winningPulse {
+  0% {
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.7), inset 0 0 6px rgba(16, 185, 129, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(16, 185, 129, 1), inset 0 0 15px rgba(16, 185, 129, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.7), inset 0 0 6px rgba(16, 185, 129, 0.5);
+  }
+}

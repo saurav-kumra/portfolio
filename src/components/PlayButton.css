@@ -1,0 +1,120 @@
+.play-btn-wrapper {
+  position: absolute;
+  right: -80px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.play-btn {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 2px solid #10B981; /* Minecraft green accent */
+  color: #10B981;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+}
+
+body.dark-mode .play-btn {
+  background: #1e1e1e;
+  border-color: #10B981;
+  color: #10B981;
+}
+
+.play-icon {
+  font-size: 1.2rem;
+  margin-left: 3px; /* Offset to center the play triangle visually */
+  transition: transform 0.2s ease;
+}
+
+.play-btn:hover .play-icon {
+  transform: scale(1.1);
+  color: #059669;
+}
+
+.play-btn-pulse {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 50%;
+  border: 2px solid #10B981;
+  opacity: 0;
+  animation: playPulse 2s infinite ease-out;
+  pointer-events: none;
+}
+
+@keyframes playPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+.play-btn-tooltip {
+  position: absolute;
+  bottom: 65px;
+  background: #111827;
+  color: #f9fafb;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+/* Arrow for the tooltip */
+.play-btn-tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px 6px 0;
+  border-style: solid;
+  border-color: #111827 transparent transparent;
+}
+
+/* Mobile responsive alignment */
+@media (max-width: 992px) {
+  .play-btn-wrapper {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    margin: 20px auto 0 auto;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .play-btn-tooltip {
+    bottom: auto;
+    top: 65px;
+  }
+
+  .play-btn-tooltip::after {
+    bottom: auto;
+    top: -6px;
+    border-width: 0 6px 6px;
+    border-color: transparent transparent #111827;
+  }
+}

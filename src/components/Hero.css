@@ -123,15 +123,22 @@
   width: 100%;
 }
 
-.hero-static-img {
+.hero-graphic-container {
+  position: relative;
   width: 100%;
   max-width: 650px; /* Width around 650px on desktop */
+  height: auto;
+  display: block;
+  transform: translate(-28px, -20px); /* Shift left and upward */
+}
+
+.hero-static-img {
+  width: 100%;
   height: auto;
   display: block;
   object-fit: contain;
   user-select: none;
   -webkit-user-drag: none;
-  transform: translate(-28px, -20px); /* Shift left and upward */
 }
 
 @media (max-width: 992px) {
@@ -147,7 +154,7 @@
   .hero-socials { justify-content: center; }
   .hero-subtitle { left: 0; transform: none; }
   
-  .hero-static-img {
+  .hero-graphic-container {
     max-width: 400px; /* responsive scaling on mobile */
     margin: 0 auto;
     transform: none; /* Reset transform on mobile */

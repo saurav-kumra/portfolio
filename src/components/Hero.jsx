@@ -6,9 +6,13 @@ import { FiDownload } from 'react-icons/fi';
 import { SiDocker, SiKubernetes } from 'react-icons/si';
 import { FaAws } from 'react-icons/fa';
 import devopsHero from '../assets/devops-hero.png';
+import PlayButton from './PlayButton';
 import './Hero.css';
 
+const TicTacToe = React.lazy(() => import('./TicTacToe'));
+
 const Hero = () => {
+  const [isGameActive, setIsGameActive] = React.useState(false);
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -107,7 +111,15 @@ const Hero = () => {
         </motion.div>
         
         <div className="hero-graphic">
-          <img src={devopsHero} alt="DevOps Illustration" className="hero-static-img" />
+          <div className="hero-graphic-container">
+            <img src={devopsHero} alt="DevOps Illustration" className="hero-static-img" />
+            {!isGameActive && <PlayButton onClick={() => setIsGameActive(true)} />}
+            {isGameActive && (
+              <React.Suspense fallback={null}>
+                <TicTacToe onClose={() => setIsGameActive(false)} />
+              </React.Suspense>
+            )}
+          </div>
         </div>
       </div>
     </section>
