@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FiSun, FiMoon, FiMenu, FiX } from 'react-icons/fi';
+import { motion, AnimatePresence } from 'framer-motion';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -55,19 +56,19 @@ const Navbar = () => {
   return (
     <nav className="navbar-pill">
       <div className="nav-container">
-        <a href="#home" className="logo mono">
+        <a href="#home" className="logo mono" onClick={() => setIsMobileMenuOpen(false)}>
           <span className="highlight">&lt;</span>
           Saurav.DevOps
           <span className="highlight">/&gt;</span>
         </a>
         
-        <ul className={`nav-links ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
+        {/* Desktop Nav Links */}
+        <ul className="nav-links desktop-only">
           {['home', 'skills', 'projects', 'certificates'].map((link) => (
             <li key={link}>
               <a 
                 href={`#${link}`}
                 className={activeSection === link ? 'active' : ''}
-                onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.charAt(0).toUpperCase() + link.slice(1)}
               </a>
@@ -79,12 +80,48 @@ const Navbar = () => {
           <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle Theme">
             {isDarkMode ? <FiSun /> : <FiMoon />}
           </button>
-          <a href="#contact" className="nav-cta-btn" onClick={() => setIsMobileMenuOpen(false)}>Get In Touch</a>
+          <a href="#contact" className="nav-cta-btn desktop-only">Get In Touch</a>
           <button className="mobile-menu-btn" onClick={toggleMobileMenu}>
             {isMobileMenuOpen ? <FiX /> : <FiMenu />}
           </button>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div 
+            className="mobile-menu"
+            initial={{ opacity: 0, y: -15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+          >
+            <ul className="mobile-nav-links">
+              {['home', 'skills', 'projects', 'certificates'].map((link) => (
+                <li key={link}>
+                  <a 
+                    href={`#${link}`}
+                    className={activeSection === link ? 'active' : ''}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link.charAt(0).toUpperCase() + link.slice(1)}
+                  </a>
+                </li>
+              ))}
+              <li>
+                <a 
+                  href="#contact" 
+                  className="mobile-nav-cta"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Get In Touch
+                </a>
+              </li>
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
