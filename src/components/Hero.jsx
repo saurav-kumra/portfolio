@@ -98,9 +98,9 @@ const Hero = () => {
           </motion.div>
 
           <motion.div variants={itemVariants} className="trust-indicators">
-            <div className="trust-badge"><FaAws className="trust-icon" /> AWS Certified</div>
-            <div className="trust-badge"><SiDocker className="trust-icon" /> Docker Certified</div>
-            <div className="trust-badge"><SiKubernetes className="trust-icon" /> Kubernetes (CKAD)</div>
+            <div className="trust-badge"><FaAws className="trust-icon brand-aws" /> AWS Certified</div>
+            <div className="trust-badge"><SiDocker className="trust-icon brand-docker" /> Docker Certified</div>
+            <div className="trust-badge"><SiKubernetes className="trust-icon brand-k8s" /> Kubernetes (CKAD)</div>
           </motion.div>
           
           <motion.div variants={itemVariants} className="hero-socials">

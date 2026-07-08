@@ -70,7 +70,7 @@
 }
 
 .brand-aws {
-  color: var(--text-primary);
+  color: #FF9900 !important;
 }
 
 .brand-k8s {
@@ -79,6 +79,10 @@
 
 .brand-docker {
   color: var(--text-primary);
+}
+
+.brand-redhat {
+  color: #EE0000 !important;
 }
 
 .cert-meta {
@@ -126,5 +130,20 @@
     width: 100%;
     justify-content: center;
   }
+}
+
+.cert-disabled-btn {
+  background: #F8F8F8 !important;
+  border: 1.5px solid #D9D9D9 !important;
+  color: #777777 !important;
+  cursor: default !important;
+  pointer-events: none !important;
+  box-shadow: none !important;
+}
+
+body.dark-mode .cert-disabled-btn {
+  background: #1C1C1C !important;
+  border: 1.5px solid #333333 !important;
+  color: #555555 !important;
 }
 

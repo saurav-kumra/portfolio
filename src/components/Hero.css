@@ -64,7 +64,7 @@
 .status-dot {
   width: 8px;
   height: 8px;
-  background-color: var(--text-primary);
+  background-color: #ED3700;
   border-radius: 50%;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
   animation: pulse-dot 2s infinite;
@@ -98,6 +98,18 @@
 .trust-icon {
   font-size: 1.1rem;
   color: var(--text-primary);
+}
+
+.brand-aws {
+  color: #FF9900 !important;
+}
+
+.brand-docker {
+  color: #2496ED !important;
+}
+
+.brand-k8s {
+  color: #326CE5 !important;
 }
 
 .hero-socials {

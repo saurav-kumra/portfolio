@@ -3,9 +3,18 @@ import { motion } from 'framer-motion';
 import './Certificates.css';
 import { FiExternalLink } from 'react-icons/fi';
 import { FaAws } from 'react-icons/fa';
-import { SiDocker, SiKubernetes } from 'react-icons/si';
+import { SiRedhat } from 'react-icons/si';
 
 const certificatesData = [
+  {
+    id: 4,
+    title: 'Red Hat Certified System Administrator (RHCSA)',
+    issuer: 'Red Hat',
+    date: 'Coming Soon',
+    link: '#',
+    icon: <SiRedhat className="brand-redhat" />,
+    isComingSoon: true
+  },
   {
     id: 1,
     title: 'AWS Certified Solutions Architect - Associate',
@@ -13,22 +22,6 @@ const certificatesData = [
     date: 'March 2023',
     link: 'https://aws.amazon.com/certification/',
     icon: <FaAws className="brand-aws" />
-  },
-  {
-    id: 2,
-    title: 'Certified Kubernetes Application Developer (CKAD)',
-    issuer: 'Cloud Native Computing Foundation (CNCF)',
-    date: 'October 2023',
-    link: 'https://training.linuxfoundation.org/',
-    icon: <SiKubernetes className="brand-k8s" />
-  },
-  {
-    id: 3,
-    title: 'Docker Certified Associate (DCA)',
-    issuer: 'Docker',
-    date: 'January 2024',
-    link: 'https://training.mirantis.com/dca-certification-exam/',
-    icon: <SiDocker className="brand-docker" />
   }
 ];
 
@@ -76,8 +69,14 @@ const Certificates = () => {
                   <span className="cert-date mono">{cert.date}</span>
                 </div>
               </div>
-              <a href={cert.link} target="_blank" rel="noopener noreferrer" className="btn btn-outline cert-link-btn">
-                <FiExternalLink /> Verify
+              <a 
+                href={cert.isComingSoon ? '#' : cert.link} 
+                onClick={cert.isComingSoon ? (e) => e.preventDefault() : undefined}
+                target={cert.isComingSoon ? undefined : "_blank"}
+                rel={cert.isComingSoon ? undefined : "noopener noreferrer"}
+                className="btn btn-outline cert-link-btn"
+              >
+                <FiExternalLink /> Soon
               </a>
             </motion.div>
           ))}
