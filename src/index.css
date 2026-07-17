@@ -190,6 +190,9 @@ ul {
 
 /* Media Queries default constraints */
 @media (max-width: 768px) {
+  .container {
+    padding: 0 1.25rem;
+  }
   .section {
     padding: 4rem 0;
   }

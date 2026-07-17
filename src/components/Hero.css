@@ -160,9 +160,18 @@
     gap: 4rem;
   }
   
+  .hero-content {
+    padding-left: 0;
+  }
+  
   .hero-title { font-size: 3rem; }
   .hero-description { margin: 0 auto 2.5rem auto; }
   .hero-cta { justify-content: center; }
+  
+  .trust-indicators {
+    justify-content: center;
+  }
+  
   .hero-socials { justify-content: center; }
   .hero-subtitle { left: 0; transform: none; }
   
